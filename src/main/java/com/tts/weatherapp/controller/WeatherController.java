@@ -18,7 +18,7 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @GetMapping
+    @GetMapping(value = { "/" })
     public String getIndex(Model model) {
         // Response response = weatherService.getForecast("06105");
         // model.addAttribute("data", response);
@@ -28,6 +28,11 @@ public class WeatherController {
         model.addAttribute("request", new Request());
         model.addAttribute("zip_codes", zipCodeList);
         return "index";
+    }
+
+    @GetMapping(value = { "/5day" })
+    public String get5Day(Model model) {
+        return "5day";
     }
 
     @PostMapping
